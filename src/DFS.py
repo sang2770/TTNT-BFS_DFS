@@ -1,9 +1,9 @@
 from tkinter import Grid
 from tabulate import tabulate
 
-class BFS:
+class DFS:
     visited = []  # List for visited nodes.
-    queue = []  # Initialize a queue
+    stack = []  # Initialize a stack
     road = []
     parents = []
     table = []
@@ -23,23 +23,23 @@ class BFS:
         return graph, node, target
 
 
-    def bfs(self, graph, node, target):  # function for BFS
+    def dfs(self, graph, node, target):  # function for DFS
         self.visited.append(node)
-        self.queue.append(node)
+        self.stack.insert(0,node)
 
-        while self.queue:          # Creating loop to visit each node
-            m = self.queue.pop(0)
+        while self.stack:          # Creating loop to visit each node
+            m = self.stack.pop(0)
             self.parents.append(m)
 
             if m in graph.keys():
                 for neighbour in graph[m]:
                     if neighbour not in self.visited:
                         self.visited.append(neighbour)
-                        self.queue.append(neighbour)
+                        self.stack.insert(0,neighbour)
 
-                row = [m, "TTKT" if m == target else ", ".join(graph[m]), ", ".join(self.visited.copy()), ", ".join(self.queue.copy())]
+                row = [m, "TTKT" if m == target else ", ".join(graph[m]), ", ".join(self.visited.copy()), ", ".join(self.stack.copy())]
                 self.table.append(row)
-
+                
             else:
                 print("Invalid input")
                 break
@@ -55,8 +55,8 @@ class BFS:
         return False
 
     def create_table(self, table):
-        print("------------- BFS -------------")
-        head = ["Trạng Thái Đầu", "Danh Sách Kề", "Danh sách đi qua", "Hàng đợi"]
+        print("------------- DFS -------------")
+        head = ["Trạng Thái Đầu", "Danh Sách Kề", "Danh sách đi qua", "Ngăn xếp"]
 
         print(tabulate(table, headers=head, tablefmt="grid"))
 
@@ -66,11 +66,11 @@ class BFS:
         except:
             print("File không hợp lệ")
             return
-        table = self.bfs(graph, node, target)
+        table = self.dfs(graph, node, target)
         if table:
             self.create_table(table)
         self.road.reverse()
         print("Đường đi: "," -> ".join(self.road))
 
-bfs = BFS()
-bfs.test("input_BDFS.txt")
+dfs = DFS()
+dfs.test("resource/input_BDFS.txt")
