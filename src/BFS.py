@@ -13,7 +13,6 @@ class BFS:
 
     def read_file(self, filename):
         graph = {}
-    
         f = open(filename)
         first_row = f.readline()
         self.node, self.target = first_row.split()
@@ -49,6 +48,7 @@ class BFS:
                 self.getRoad()
                 return self.table
         return False
+
     def getRoad(self):
         while(self.node != self.target):
             self.road.append(self.target)
