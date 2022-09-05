@@ -4,11 +4,11 @@ from tabulate import tabulate
 class BFS:
     visited = []  # List for visited nodes.
     queue = []  # Initialize a queue
-    road = []
-    parents = {}
-    table = []
-    node = 0
-    target = 0
+    road = [] # List for road
+    parents = {} # Tick parent for node
+    table = [] # List for print table
+    node = 0 # Node start
+    target = 0 # Node end
 
     def read_file(self, filename):
         graph = {}

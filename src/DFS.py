@@ -3,12 +3,12 @@ from tabulate import tabulate
 
 class DFS:
     visited = []  # List for visited nodes.
-    stack = []  # Initialize a stack
-    road = []
-    parents = {}
-    table = []
-    node = 0
-    target = 0
+    queue = []  # Initialize a queue
+    road = [] # List for road
+    parents = {} # Tick parent for node
+    table = [] # List for print table
+    node = 0 # Node start
+    target = 0 # Node end
 
     def read_file(self, filename):
         graph = {}
