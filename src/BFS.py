@@ -1,4 +1,3 @@
-from pickle import TRUE
 from tkinter import Grid
 from tabulate import tabulate
 
