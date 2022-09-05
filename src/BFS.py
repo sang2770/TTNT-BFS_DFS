@@ -73,4 +73,4 @@ class BFS:
         print("Đường đi: "," -> ".join(self.road))
 
 dfs = BFS()
-dfs.test("resource/input_BDFS.txt")
+dfs.test("resources/input_BDFS.txt")
