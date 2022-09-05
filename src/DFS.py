@@ -3,7 +3,7 @@ from tabulate import tabulate
 
 class DFS:
     visited = []  # List for visited nodes.
-    queue = []  # Initialize a queue
+    stack = []  # Initialize a queue
     road = [] # List for road
     parents = {} # Tick parent for node
     table = [] # List for print table
