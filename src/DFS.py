@@ -75,7 +75,7 @@ class DFS:
             self.road.reverse()
             print("Đường đi: "," -> ".join(self.road))
             try:
-                self.writeFile("resource/output/output_DFS.txt")
+                self.writeFile("resources/output/output_DFS.txt")
             except:
                 print("File không hợp lệ")
                 return
@@ -83,4 +83,4 @@ class DFS:
             print("Không tìm thấy")
 
 dfs = DFS()
-dfs.test("resource/input/input_BDFS.txt")
+dfs.test("resources/input/input_BDFS.txt")

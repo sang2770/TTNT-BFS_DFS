@@ -111,7 +111,7 @@ class HillClimbing:
             self.road.reverse()
             print("Đường đi: ", " -> ".join(self.road))
             try:
-                self.writeFile("resource/output/output_hill.txt")
+                self.writeFile("resources/output/output_hill.txt")
             except:
                 print("File không hợp lệ")
                 return
@@ -120,4 +120,4 @@ class HillClimbing:
 
 
 hillClimbing = HillClimbing()
-hillClimbing.test("resource/input/input_hill.txt")
+hillClimbing.test("resources/input/input_hill.txt")

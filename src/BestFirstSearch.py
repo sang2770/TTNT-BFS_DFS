@@ -82,7 +82,7 @@ class BestFirstSearch:
         return False
 
     def createTable(self):
-        print("------------- besrFirstSearch -------------")
+        print("------------- BestFirstSearch -------------")
         head = ["Trạng Thái Đầu", "Danh Sách Kề", "Danh sách đi qua", "Hàng đợi"]
         table_result = tabulate(self.table, headers=head, tablefmt="grid")
         return table_result
@@ -99,7 +99,7 @@ class BestFirstSearch:
             self.road.reverse()
             print("Đường đi: "," -> ".join(self.road))
             try:
-                self.writeFile("resource/output.txt")
+                self.writeFile("resources/output/output_best_first_search.txt")
             except:
                 print("File không hợp lệ")
                 return
@@ -108,4 +108,4 @@ class BestFirstSearch:
         
 
 bestFirstSearch = BestFirstSearch()
-bestFirstSearch.test("resource/input/input_best_fist_search.txt")
+bestFirstSearch.test("resources/input/input_best_fist_search.txt")
