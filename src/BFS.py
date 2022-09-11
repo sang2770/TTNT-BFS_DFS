@@ -21,7 +21,10 @@ class BFS:
                 row = row.split()
                 graph[row.pop(0)] = row or ''
         return graph, node, target
-
+    def writeFile(self, filename):
+        with open(filename, 'w', encoding="utf-8") as f:
+            f.write(self.createTable())
+        f.close()
 
     def bfs(self, graph, node, target):  # function for BFS
         self.visited.append(node)
@@ -54,23 +57,31 @@ class BFS:
                 return self.table
         return False
 
-    def createTable(self, table):
+    def createTable(self):
         print("------------- BFS -------------")
         head = ["Trạng Thái Đầu", "Danh Sách Kề", "Danh sách đi qua", "Hàng đợi"]
-
-        print(tabulate(table, headers=head, tablefmt="grid"))
+        table_result = tabulate(self.table, headers=head, tablefmt="grid")
+        # print(table_result)
+        return table_result
 
     def test(self, file_name):
         try:
-            graph, node, target = self.read_file(file_name)
+            graph, node, target = self.readFile(file_name)
         except:
             print("File không hợp lệ")
             return
         table = self.bfs(graph, node, target)
         if table:
-            self.create_table(table)
-        self.road.reverse()
-        print("Đường đi: "," -> ".join(self.road))
+            self.createTable()
+            self.road.reverse()
+            print("Đường đi: "," -> ".join(self.road))
+            try:
+                self.writeFile("resource/output/output_BFS.txt")
+            except:
+                print("File không hợp lệ")
+            return
+        else:
+            print("Không tìm thấy")
 
 bfs = BFS()
-bfs.test("resource/input_BDFS.txt")
+bfs.test("resource/input/input_BDFS.txt")

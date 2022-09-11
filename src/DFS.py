@@ -21,7 +21,10 @@ class DFS:
                 row = row.split()
                 graph[row.pop(0)] = row or ''
         return graph, node, target
-
+    def writeFile(self, filename):
+        with open(filename, 'w', encoding="utf-8") as f:
+            f.write(self.createTable())
+        f.close()
 
     def dfs(self, graph, node, target):  # function for DFS
         self.visited.append(node)
@@ -54,11 +57,11 @@ class DFS:
                 return self.table
         return False
 
-    def create_table(self, table):
+    def createTable(self):
         print("------------- DFS -------------")
         head = ["Trạng Thái Đầu", "Danh Sách Kề", "Danh sách đi qua", "Ngăn xếp"]
-
-        print(tabulate(table, headers=head, tablefmt="grid"))
+        table_result = tabulate(self.table, headers=head, tablefmt="grid")
+        return table_result
 
     def test(self, file_name):
         try:
@@ -68,9 +71,16 @@ class DFS:
             return
         table = self.dfs(graph, node, target)
         if table:
-            self.create_table(table)
-        self.road.reverse()
-        print("Đường đi: "," -> ".join(self.road))
+            self.createTable()
+            self.road.reverse()
+            print("Đường đi: "," -> ".join(self.road))
+            try:
+                self.writeFile("resource/output/output_DFS.txt")
+            except:
+                print("File không hợp lệ")
+                return
+        else:
+            print("Không tìm thấy")
 
 dfs = DFS()
-dfs.test("resource/input_BDFS.txt")
+dfs.test("resource/input/input_BDFS.txt")
