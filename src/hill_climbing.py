@@ -107,7 +107,6 @@ class HillClimbing:
             return
         table = self.hillClimbing(graph, start, target)
         if table:
-            self.createTable()
             self.road.reverse()
             print("Đường đi: ", " -> ".join(self.road))
             try:

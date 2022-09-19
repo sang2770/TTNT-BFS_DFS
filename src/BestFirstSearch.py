@@ -6,6 +6,7 @@ class Node(object):
     neighbour = []
     value = ''
     weight = 0
+    edge_values = {}
     def __init__(self, value, weight):
         self.value = value
         self.weight = int(weight)
@@ -95,7 +96,6 @@ class BestFirstSearch:
             return
         table = self.besrFirstSearch(graph, start, target)
         if table:
-            self.createTable()
             self.road.reverse()
             print("Đường đi: "," -> ".join(self.road))
             try:
